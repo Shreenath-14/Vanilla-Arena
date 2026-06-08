@@ -1,15 +1,14 @@
 'use client';
 import dynamic from 'next/dynamic';
-import Link from 'next/link';    
 import { useState, useEffect } from 'react';
 import { supabase } from '@/lib/supabaseClient';
 
 const MonacoEditor = dynamic(() => import('@monaco-editor/react'), { ssr: false });
 
 const difficultyColor: Record<string, string> = {
-  easy:   'bg-green-500/20 text-green-400',
+  easy: 'bg-green-500/20 text-green-400',
   medium: 'bg-yellow-500/20 text-yellow-400',
-  hard:   'bg-red-500/20 text-red-400',
+  hard: 'bg-red-500/20 text-red-400',
 };
 
 interface Challenge {
@@ -111,7 +110,6 @@ export default function ChallengeWorkspace({ challenge, userId }: Props) {
     <div className="min-h-screen bg-[#0a0a0a] text-white flex flex-col">
       {/* Header */}
       <div className="border-b border-white/10 px-8 py-4 flex items-center gap-4">
-        <Link href="/challenges" className="text-gray-400 hover:text-white text-sm transition">← Challenges</Link>
         <h1 className="font-bold text-lg">{challenge.title}</h1>
         <span className={`text-xs px-3 py-1 rounded-full ${difficultyColor[challenge.difficulty]}`}>
           {challenge.difficulty}
@@ -138,11 +136,10 @@ export default function ChallengeWorkspace({ challenge, userId }: Props) {
 
           {/* Result panel */}
           {result && (
-            <div className={`p-4 rounded-xl border text-sm ${
-              result.passed
+            <div className={`p-4 rounded-xl border text-sm ${result.passed
                 ? 'bg-green-500/10 border-green-500/30 text-green-300'
                 : 'bg-red-500/10 border-red-500/30 text-red-300'
-            }`}>
+              }`}>
               {result.passed ? (
                 <div className="flex flex-col gap-2">
                   <p className="font-bold text-base">✅ Passed!</p>
