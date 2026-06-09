@@ -1,6 +1,7 @@
 import { createServerClient } from '@supabase/ssr';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
+import DiscordIcon from '@/components/DiscordIcon';
 import Image from 'next/image';
 
 function getLevelThreshold(level: number): number {
@@ -12,7 +13,7 @@ export default async function ProfilePage() {
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    { cookies: { getAll: () => cookieStore.getAll(), setAll: () => {} } }
+    { cookies: { getAll: () => cookieStore.getAll(), setAll: () => { } } }
   );
 
   const { data: { user } } = await supabase.auth.getUser();
@@ -111,8 +112,28 @@ export default async function ProfilePage() {
             </div>
           )}
         </div>
-
+        <div className="flex items-center justify-between px-6 py-4 rounded-xl border border-[#5865F2]/20 bg-[#5865F2]/5">
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-lg bg-[#5865F2]/20 flex items-center justify-center flex-shrink-0">
+              <span className="text-[#7289da]">
+                <DiscordIcon size={16} />
+              </span>
+            </div>
+            <div>
+              <p className="text-sm font-semibold text-white">Join the Community</p>
+              <p className="text-xs text-gray-500 mt-0.5">Connect with other coders on Discord</p>
+            </div>
+          </div>
+          <a
+            href="https://discord.gg/gcbPNN4uw"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#5865F2]/10 border border-[#5865F2]/30 text-[#7289da] hover:bg-[#5865F2]/20 transition text-sm font-medium flex-shrink-0"
+          >
+            Join Discord
+          </a>
       </div>
-    </main>
+    </div>
+    </main >
   );
 }

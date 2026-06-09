@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
+import DiscordIcon from '@/components/DiscordIcon';
 
 // Floating particle
 function Particle({ x, y, size, duration, delay, opacity }: {
@@ -366,8 +367,20 @@ export default function HomePage() {
           <p className="font-dm text-gray-600 text-sm">
             Built with Next.js · Supabase · Groq
           </p>
-        </div>
-      </footer>
-    </main>
+
+          <a
+          href="https://discord.gg/gcbPNN4uw"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 px-4 py-2 rounded-lg border border-white/10 text-gray-400 hover:text-white hover:border-white/30 transition text-sm font-dm"
+    >
+          <span className="text-[#7289da]">
+            <DiscordIcon size={16} />
+          </span>
+          Join Discord
+        </a>
+      </div>
+    </footer>
+    </main >
   );
 }

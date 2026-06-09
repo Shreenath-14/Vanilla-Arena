@@ -1,5 +1,6 @@
 import { createServerClient } from '@supabase/ssr';
 import { cookies } from 'next/headers';
+import DiscordIcon from '@/components/DiscordIcon';
 import Link from 'next/link';
 
 const difficultyColor: Record<string, string> = {
@@ -110,6 +111,21 @@ export default async function ChallengesPage() {
               </Link>
             );
           })}
+        </div>
+        <div className="mt-8 flex items-center justify-between px-6 py-4 rounded-xl border border-white/5 bg-white/[0.02]">
+          <div>
+            <p className="text-sm font-semibold text-white">Stuck on a challenge?</p>
+            <p className="text-xs text-gray-500 mt-0.5">Get help from the community on Discord.</p>
+          </div>
+          <Link
+            href="https://discord.gg/gcbPNN4uw"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#5865F2]/10 border border-[#5865F2]/30 text-[#7289da] hover:bg-[#5865F2]/20 transition text-sm font-medium flex-shrink-0"
+          >
+            <DiscordIcon size={16} />
+            Join Discord
+          </Link>
         </div>
       </div>
     </main>
